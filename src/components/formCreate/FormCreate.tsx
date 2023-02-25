@@ -5,7 +5,10 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/hooks";
 import { createUser } from "../../store/modules/NewUser";
-import Message from "../../components/Alert/Alert";
+import { showAlert } from "../../store/modules/StatusApiAlertSlice";
+import MessageStatusApi from "../StatusMessageApi/StatusApiAlert";
+import Message from "../Alert/Alert";
+import { setAlertMessage } from "../../store/modules/AlerSlace";
 import "./style.css";
 
 const FormCreate: React.FC = () => {
@@ -20,15 +23,34 @@ const FormCreate: React.FC = () => {
 
   const handlerMessagesPg = () => {
     if (name.length < 4) {
+      dispatch(
+        setAlertMessage({
+          msg: "o nome deve ter no minimo 4 caracteres",
+          type: "warning",
+        })
+      );
       return;
     }
     if (email.length < 4) {
+      dispatch(
+        setAlertMessage({
+          msg: "Campo email preenchido imcorretamente",
+          type: "warning",
+        })
+      );
       return;
     }
     if (password.length < 4) {
+      dispatch(
+        setAlertMessage({
+          msg: "A senha deve ter no minimo 4 caracteres",
+          type: "warning",
+        })
+      );
       return;
     }
     dispatch(createUser({ name: name, email: email, password: password }));
+    dispatch(showAlert({ open: "open" }));
     navigate("/");
   };
 
@@ -114,11 +136,12 @@ const FormCreate: React.FC = () => {
               <Button variant="contained" onClick={handlerCreatePg}>
                 Voltar
               </Button>
-              <Message />
             </Grid>
           </Grid>
         </Paper>
       </Box>
+      <Message />
+      <MessageStatusApi />
     </Container>
   );
 };

@@ -4,9 +4,12 @@ import { Container } from "@mui/system";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/hooks";
-import Message from "../../components/Alert/Alert";
+// import Message from "../../components/Alert/Alert";
 import { logUser } from "../../store/modules/LogSlice";
 import { setAlertMessage } from "../../store/modules/AlerSlace";
+import { showAlert } from "../../store/modules/StatusApiAlertSlice";
+import MessageStatusApi from "../StatusMessageApi/StatusApiAlert";
+import Message from "../Alert/Alert";
 import "./style.css";
 
 const LoginForm: React.FC = () => {
@@ -44,7 +47,7 @@ const LoginForm: React.FC = () => {
     };
     const result = await dispatch(logUser(login)).unwrap();
     if (!result.ok) {
-      alert(result.message);
+      dispatch(showAlert({ open: "open" }));
       return;
     }
     navigate("/Messages");
@@ -95,7 +98,7 @@ const LoginForm: React.FC = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                className="icoAnimation"
+                className="input-animation"
                 label="Email"
                 type="email"
                 fullWidth
@@ -105,7 +108,7 @@ const LoginForm: React.FC = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                className="icoAnimation"
+                className="input-animation"
                 label="Password"
                 type="password"
                 fullWidth
@@ -127,6 +130,7 @@ const LoginForm: React.FC = () => {
         </Paper>
       </Box>
       <Message />
+      <MessageStatusApi />
     </Container>
   );
 };

@@ -6,6 +6,7 @@ import {
   apiDeleteUser,
 } from "../../api";
 import { DeletUserProps, UpdateUeserProps } from "../../api/types";
+import { setTestAlert } from "./StatusApiAlertSlice";
 export type GetUser = {
   id: string;
   name: string;
@@ -24,17 +25,51 @@ const initialState: GetUser = {
 
 export const logUser = createAsyncThunk(
   "auth/login",
-  async (login: any, options) => {
+  async (login: any, { dispatch }) => {
     const result = await apiLogApp(login);
+    if (result.ok === false) {
+      dispatch(
+        setTestAlert({
+          msg: result.message,
+          type: "error",
+          open: "close",
+        })
+      );
+    }
+    dispatch(
+      setTestAlert({
+        msg: result.message,
+        type: "success",
+        open: "close",
+      })
+    );
     return result;
   }
 );
 
 export const logoffUser = createAsyncThunk(
   "user/logoffUser",
-  async (userId: string) => {
+  async (userId: string, { dispatch }) => {
     try {
       const result = await apiLogoffApp(userId);
+      if (result.ok === false) {
+        dispatch(
+          setTestAlert({
+            msg: result.message,
+            type: "error",
+            open: "close",
+          })
+        );
+      }
+
+      dispatch(
+        setTestAlert({
+          msg: result.message,
+          type: "success",
+          open: "close",
+        })
+      );
+
       return result;
     } catch (data: any) {
       return data.message;
@@ -44,10 +79,9 @@ export const logoffUser = createAsyncThunk(
 
 export const editeUser = createAsyncThunk(
   "user/editeUser",
-  async (user: UpdateUeserProps) => {
+  async (user: UpdateUeserProps, { dispatch }) => {
     try {
       const result = await apiupdateUser(user);
-
       let changes = {};
 
       if (result.ok) {
@@ -55,25 +89,62 @@ export const editeUser = createAsyncThunk(
           name: user.name,
           password: user.password,
         };
+        dispatch(
+          setTestAlert({
+            msg: result.message,
+            type: "success",
+            open: "close",
+          })
+        );
       }
       return {
         id: user.id,
         changes,
       };
-    } catch (data: any) {
-      return data.message;
+    } catch (result: any) {
+      dispatch(
+        setTestAlert({
+          msg: result.message,
+          type: "error",
+          open: "close",
+        })
+      );
+      return result.message;
     }
   }
 );
 
 export const deleteUser = createAsyncThunk(
   "user/deletUser",
-  async (user: DeletUserProps) => {
+  async (user: DeletUserProps, { dispatch }) => {
     try {
       const result = await apiDeleteUser(user);
+      if (result.ok === false) {
+        dispatch(
+          setTestAlert({
+            msg: result.message,
+            type: "error",
+            open: "close",
+          })
+        );
+      }
+      dispatch(
+        setTestAlert({
+          msg: result.message,
+          type: "success",
+          open: "close",
+        })
+      );
       return result;
-    } catch (data: any) {
-      return data.message;
+    } catch (result: any) {
+      dispatch(
+        setTestAlert({
+          msg: result.message,
+          type: "error",
+          open: "close",
+        })
+      );
+      return result.message;
     }
   }
 );
