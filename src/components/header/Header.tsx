@@ -5,6 +5,7 @@ import PositionedMenu from "../menu/Menu";
 import { ShowMessagesProps } from "../TypesComponents/index";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { logoffUser } from "../../store/modules/LogSlice";
+import "./style.css";
 
 const HeaderDefalt: React.FC<ShowMessagesProps> = ({
   title,
@@ -32,7 +33,7 @@ const HeaderDefalt: React.FC<ShowMessagesProps> = ({
           textAlign: "center",
         }}
       >
-        <Typography variant="h5">
+        <Typography className="animation-name-user" variant="h5">
           {title}
           {subTitle}
         </Typography>

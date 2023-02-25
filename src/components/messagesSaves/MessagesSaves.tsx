@@ -55,6 +55,7 @@ const SavesMessages: React.FC = () => {
         margin: "5px",
         maxWidth: "lg",
         minHeight: "500px",
+        backgroundColor: " rgb(234, 234, 236)",
       }}
     >
       <Grid item xs={12}>

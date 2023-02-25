@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../store/hooks";
 import { createUser } from "../../store/modules/NewUser";
 import Message from "../../components/Alert/Alert";
+import "./style.css";
 
 const FormCreate: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -62,6 +63,7 @@ const FormCreate: React.FC = () => {
           >
             <Grid item xs={12}>
               <Typography
+                className="icoAnimation"
                 variant="h5"
                 sx={{
                   marginTop: "10px",
@@ -75,6 +77,7 @@ const FormCreate: React.FC = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                className="input-animation"
                 label="Name"
                 type="texte"
                 fullWidth
@@ -84,6 +87,7 @@ const FormCreate: React.FC = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                className="input-animation"
                 label="Email"
                 type="email"
                 fullWidth
@@ -93,6 +97,7 @@ const FormCreate: React.FC = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                className="input-animation"
                 label="Password"
                 type="password"
                 fullWidth

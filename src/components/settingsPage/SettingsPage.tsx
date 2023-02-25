@@ -92,7 +92,7 @@ const PageSettings: React.FC = () => {
       sx={{
         maxWidth: "lg",
         minHeight: "500px",
-        backgroundColor: " rgb(112, 107, 107)",
+        backgroundColor: " rgb(224, 221, 221)",
       }}
     >
       <Grid item xs={12}>

@@ -81,6 +81,7 @@ const LoginForm: React.FC = () => {
           >
             <Grid item xs={12}>
               <Typography
+                className="icoAnimation"
                 variant="h5"
                 sx={{
                   marginTop: "10px",
@@ -94,6 +95,7 @@ const LoginForm: React.FC = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                className="icoAnimation"
                 label="Email"
                 type="email"
                 fullWidth
@@ -103,6 +105,7 @@ const LoginForm: React.FC = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                className="icoAnimation"
                 label="Password"
                 type="password"
                 fullWidth

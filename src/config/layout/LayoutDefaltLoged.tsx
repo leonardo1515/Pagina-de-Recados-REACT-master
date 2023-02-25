@@ -14,7 +14,7 @@ const DefaultLayoutLogged: React.FC<DefaultLayoutProps> = ({ page }) => {
           justifyContent: "center",
           height: "100vh",
           width: "100vw",
-          backgroundColor: " rgb(203, 196, 196)",
+          backgroundColor: " rgb(88, 88, 88)",
         }}
       >
         {page}

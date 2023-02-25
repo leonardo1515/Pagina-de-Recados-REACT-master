@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid } from "@mui/material";
-
 interface DefaultLayoutProps {
   page: React.ReactNode;
 }
@@ -14,7 +13,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ page }) => {
           justifyContent: "center",
           height: "100vh",
           width: "100vw",
-          backgroundColor: " rgb(201, 197, 197)",
+          backgroundColor: " rgb(231, 247, 251)",
         }}
       >
         {page}

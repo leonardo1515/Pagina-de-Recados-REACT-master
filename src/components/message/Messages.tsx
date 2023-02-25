@@ -100,6 +100,7 @@ const PageMessags: React.FC = () => {
         margin: "5px",
         maxWidth: "lg",
         minHeight: "500px",
+        backgroundColor: " rgb(234, 234, 236)",
       }}
     >
       <Grid item xs={12}>
@@ -112,16 +113,19 @@ const PageMessags: React.FC = () => {
       </Grid>
       <Grid item xs={6}>
         <TextField
+          fullWidth
           label="Mensagem"
           type="text"
           value={message || ""}
-          fullWidth
           inputRef={inputMessage}
           onChange={(e) => setMessage(e.target.value)}
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
+          sx={{
+            maxWidth: "95%",
+          }}
           label="Descrição"
           type="text"
           value={descript || ""}

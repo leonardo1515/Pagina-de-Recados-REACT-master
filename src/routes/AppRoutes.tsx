@@ -27,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/Settings",
-    element: <DefaultLayout page={<PageSettings />} />,
+    element: <DefaultLayoutLogged page={<PageSettings />} />,
   },
 ]);
 
