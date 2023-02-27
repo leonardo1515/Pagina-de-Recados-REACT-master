@@ -76,6 +76,7 @@ const PageSettings: React.FC = () => {
   const excluirUser = useCallback(
     (idUser: string) => {
       dispatch(deleteUser({ id: idUser }));
+      sessionStorage.removeItem("looged");
       navigate("/");
     },
     [dispatch, navigate]

@@ -19,6 +19,7 @@ const HeaderDefalt: React.FC<ShowMessagesProps> = ({
 
   const exitAplication = () => {
     dispatch(logoffUser(user.id));
+    sessionStorage.removeItem("looged");
     navigate("/");
   };
   const goSettings = () => {

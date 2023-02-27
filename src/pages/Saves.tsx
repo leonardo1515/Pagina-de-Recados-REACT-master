@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
-import { useAppSelector } from "../store/hooks";
+// import { useAppSelector } from "../store/hooks";
 import { useNavigate } from "react-router-dom";
 import SavesMessages from "../components/messagesSaves/MessagesSaves";
-import "./style.css";
 import { Box } from "@mui/material";
+import "./style.css";
 
 const Saves: React.FC = () => {
   const navigate = useNavigate();
-  const logeed = useAppSelector((state) => state.LogUser);
+  // const logeed = useAppSelector((state) => state.LogUser);
   useEffect(() => {
-    if (logeed.status !== true) {
+    const logged = sessionStorage.getItem("looged");
+    if (!logged) {
       navigate("/");
     }
   }, []);

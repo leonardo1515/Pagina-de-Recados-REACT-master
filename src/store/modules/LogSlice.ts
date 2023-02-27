@@ -36,6 +36,7 @@ export const logUser = createAsyncThunk(
         })
       );
     }
+    sessionStorage.setItem("looged", result.data.status);
     dispatch(
       setTestAlert({
         msg: result.message,
