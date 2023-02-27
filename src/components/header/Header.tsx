@@ -22,7 +22,7 @@ const HeaderDefalt: React.FC<ShowMessagesProps> = ({
     navigate("/");
   };
   const goSettings = () => {
-    navigate("/Settings");
+    navigate("/settings");
   };
   return (
     <Grid container spacing={2}>

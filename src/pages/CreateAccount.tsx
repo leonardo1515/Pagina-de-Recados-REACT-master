@@ -9,7 +9,7 @@ const CreatAccount: React.FC = () => {
 
   useEffect(() => {
     if (logeed.status !== false) {
-      navigate("/Messages");
+      navigate("/messages");
     }
   }, []);
 

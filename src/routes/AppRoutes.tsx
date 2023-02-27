@@ -14,19 +14,19 @@ const router = createBrowserRouter([
     element: <DefaultLayout page={<Login />} />,
   },
   {
-    path: "/CreatAcoount",
+    path: "/creat-acoount",
     element: <DefaultLayout page={<CreateAccount />} />,
   },
   {
-    path: "/Messages",
+    path: "/messages",
     element: <DefaultLayoutLogged page={<Messages />} />,
   },
   {
-    path: "/Saves",
+    path: "/saves",
     element: <DefaultLayoutLogged page={<Saves />} />,
   },
   {
-    path: "/Settings",
+    path: "/settings",
     element: <DefaultLayoutLogged page={<PageSettings />} />,
   },
 ]);

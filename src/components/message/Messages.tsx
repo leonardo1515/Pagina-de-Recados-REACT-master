@@ -84,10 +84,10 @@ const PageMessags: React.FC = () => {
   );
 
   const goMessages = () => {
-    navigate("/Messages");
+    navigate("/messages");
   };
   const goSaves = () => {
-    navigate("/Saves");
+    navigate("/saves");
   };
 
   const closeModal = () => setOpen(false);

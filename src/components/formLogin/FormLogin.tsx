@@ -50,10 +50,10 @@ const LoginForm: React.FC = () => {
       dispatch(showAlert({ open: "open" }));
       return;
     }
-    navigate("/Messages");
+    navigate("/messages");
   };
   const handlerCreatePg = () => {
-    navigate("/CreatAcoount");
+    navigate("/creat-acoount");
   };
 
   return (

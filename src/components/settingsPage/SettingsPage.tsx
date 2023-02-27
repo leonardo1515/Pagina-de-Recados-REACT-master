@@ -82,10 +82,10 @@ const PageSettings: React.FC = () => {
   );
 
   const goMessages = () => {
-    navigate("/Messages");
+    navigate("/messages");
   };
   const goSaves = () => {
-    navigate("/Saves");
+    navigate("/saves");
   };
 
   return (

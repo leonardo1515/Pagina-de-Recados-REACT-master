@@ -9,7 +9,7 @@ const Login: React.FC = () => {
   const logeed = useAppSelector((state) => state.LogUser);
   const jumpPage = () => {
     if (logeed.status === true) {
-      navigate("/Messages");
+      navigate("/messages");
     }
   };
 
