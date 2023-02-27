@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { Grid, Paper, Typography } from "@mui/material";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
@@ -31,15 +31,18 @@ const SavesMessages: React.FC = () => {
     noMessage = "Não tem mensagens salvas.";
   }
 
-  const handleDeleteMessage = (_id: string) => {
-    dispatch(deletMessage({ userId: user.id, id: _id }));
-    dispatch(
-      setAlertMessage({
-        msg: "Mensagem deletada com sucesso.",
-        type: "success",
-      })
-    );
-  };
+  const handleDeleteMessage = useCallback(
+    (_id: string) => {
+      dispatch(deletMessage({ userId: user.id, id: _id }));
+      dispatch(
+        setAlertMessage({
+          msg: "Mensagem deletada com sucesso.",
+          type: "success",
+        })
+      );
+    },
+    [dispatch, user.id]
+  );
 
   const goMessages = () => {
     navigate("/Messages");

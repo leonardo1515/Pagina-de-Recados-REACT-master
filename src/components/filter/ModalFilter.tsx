@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import CloseIcon from "@mui/icons-material/Close";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { deletMessage } from "../../store/modules/MessagsSlace";
 import { setAlertMessage } from "../../store/modules/AlerSlace";
@@ -33,15 +33,18 @@ const ModalFilter: React.FC<ModalTransactionProps> = ({
   const dispatch = useAppDispatch();
   const e = messagesRedux.filter((item) => item._message.includes(message));
 
-  const handleDeleteMessage = (_id: string) => {
-    dispatch(deletMessage({ userId: user.id, id: _id }));
-    dispatch(
-      setAlertMessage({
-        msg: "Mensagem deletada com sucesso.",
-        type: "success",
-      })
-    );
-  };
+  const handleDeleteMessage = useCallback(
+    (_id: string) => {
+      dispatch(deletMessage({ userId: user.id, id: _id }));
+      dispatch(
+        setAlertMessage({
+          msg: "Mensagem deletada com sucesso.",
+          type: "success",
+        })
+      );
+    },
+    [dispatch, user.id]
+  );
 
   return (
     <Dialog open={open} onClose={actionCancel}>

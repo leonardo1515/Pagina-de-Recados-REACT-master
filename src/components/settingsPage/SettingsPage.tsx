@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
@@ -36,7 +36,7 @@ const PageSettings: React.FC = () => {
     }
   }, []);
 
-  const updateUser = () => {
+  const updateUser = useCallback(() => {
     if (name.length < 4) {
       dispatch(
         setAlertMessage({
@@ -71,12 +71,15 @@ const PageSettings: React.FC = () => {
         type: "success",
       })
     );
-  };
+  }, [dispatch, name, password, user.id]);
 
-  const excluirUser = (idUser: string) => {
-    dispatch(deleteUser({ id: idUser }));
-    navigate("/");
-  };
+  const excluirUser = useCallback(
+    (idUser: string) => {
+      dispatch(deleteUser({ id: idUser }));
+      navigate("/");
+    },
+    [dispatch, navigate]
+  );
 
   const goMessages = () => {
     navigate("/Messages");

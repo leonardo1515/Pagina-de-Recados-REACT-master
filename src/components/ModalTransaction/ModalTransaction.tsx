@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import CloseIcon from "@mui/icons-material/Close";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   selectById,
@@ -41,7 +41,7 @@ const ModalTransaction: React.FC<ModalMessagesProps> = ({
     }
   }, []);
 
-  const update = () => {
+  const update = useCallback(() => {
     dispatch(
       updateMessage({
         userId: user.id,
@@ -69,7 +69,15 @@ const ModalTransaction: React.FC<ModalMessagesProps> = ({
         type: "success",
       })
     );
-  };
+  }, [
+    actionCancel,
+    descript,
+    dispatch,
+    idMessage,
+    message,
+    messageCurretRedux?._save,
+    user.id,
+  ]);
 
   return (
     <Dialog open={open} onClose={actionCancel}>

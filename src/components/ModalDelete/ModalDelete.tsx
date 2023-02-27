@@ -10,13 +10,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 import { ModalDeleteProps } from "../TypesComponents";
 
-interface ModalTransactionProps {
-  actionType: "message" | "user";
-  open: boolean;
-  actionCancel: () => void;
-  actionDelete: () => void;
-}
-
 const ModalDelete: React.FC<ModalDeleteProps> = ({
   actionType,
   open,

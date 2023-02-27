@@ -8,7 +8,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { SaveAlt } from "@mui/icons-material";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import ModalTransaction from "../ModalTransaction/ModalTransaction";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
@@ -47,7 +47,7 @@ const HandlerDrop: React.FC<MessagesTableProps> = ({
   };
   const dispatch = useAppDispatch();
 
-  const saveMessag = () => {
+  const saveMessag = useCallback(() => {
     dispatch(
       saveMessage({
         userId: user.id,
@@ -74,7 +74,14 @@ const HandlerDrop: React.FC<MessagesTableProps> = ({
         type: "success",
       })
     );
-  };
+  }, [
+    dispatch,
+    messageCurretRedux?._descript,
+    messageCurretRedux?._message,
+    messageCurretRedux?._save,
+    messages._id,
+    user.id,
+  ]);
 
   return (
     <>
@@ -111,7 +118,7 @@ const HandlerDrop: React.FC<MessagesTableProps> = ({
             <Box className={show}>
               <DropBUtton
                 message={messages}
-                actionDelete={() => openDeleteModal}
+                actionDelete={() => openDeleteModal()}
                 saveMessag={() => saveMessag()}
                 openModal={() => openModal()}
               />

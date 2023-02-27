@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Button, Grid, IconButton, Paper, TextField } from "@mui/material";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
@@ -35,7 +35,7 @@ const PageMessags: React.FC = () => {
     dispatch(getAllMessages(user.id));
   }, []);
 
-  const addMessag = () => {
+  const addMessag = useCallback(() => {
     if (message.length < 4) {
       dispatch(
         setAlertMessage({
@@ -68,17 +68,20 @@ const PageMessags: React.FC = () => {
     );
     setMessage("");
     setDescript("");
-  };
+  }, [descript, dispatch, message, user.id]);
 
-  const handleDeleteMessage = (_id: string) => {
-    dispatch(deletMessage({ userId: user.id, id: _id }));
-    dispatch(
-      setAlertMessage({
-        msg: "Mensagem deletada com sucesso.",
-        type: "success",
-      })
-    );
-  };
+  const handleDeleteMessage = useCallback(
+    (_id: string) => {
+      dispatch(deletMessage({ userId: user.id, id: _id }));
+      dispatch(
+        setAlertMessage({
+          msg: "Mensagem deletada com sucesso.",
+          type: "success",
+        })
+      );
+    },
+    [dispatch, user.id]
+  );
 
   const goMessages = () => {
     navigate("/Messages");
